@@ -4,7 +4,7 @@ export class PipeObstacle {
 
     x = 300;
     y = 100;
-    height = 500;
+    height = 500; //dynamic height
     width = 100;
     canvas;
     pencil;
@@ -18,6 +18,7 @@ export class PipeObstacle {
     constructor(canvas, pencil) {
         this.pencil = pencil;
         this.canvas = canvas;
+        this.height = canvas.height;
     }
 
     draw() {
