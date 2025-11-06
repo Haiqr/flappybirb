@@ -5,34 +5,41 @@ export class Bird {
     width = 50;
     height = 50;
     canvas;
-    pencil; 
-
+    pencil;
 
     ySpeed = 1;
+    maximumYSpeed = 20;
 
-    constructor(canvas, pencil){
+    constructor(canvas, pencil) {
         this.canvas = canvas;
         this.pencil = pencil;
     }
 
-
-
-    draw () {
-       //top pipe
+    draw() {
+        //top pipe
         this.pencil.fillStyle = 'red'; // Set the fill color
-        this.pencil.fillRect(this.x, this.y, this.width, this.height); // x, y, w, h
+        this.pencil.fillRect(
+            this.x, 
+            this.y, 
+            this.width, 
+            this.height
+        ); // x, y, w, h
     }
-
-
-
-
 
     gravity() {
-        this.y += this.ySpeed;
-        this.ySpeed += 1;
+        this.y += this.ySpeed
+        this.ySpeed += 2;
 
-        if(this.ySpeed > 2){
-            this.ySpeed = 2;
+        if(this.ySpeed > this.maximumYSpeed) {
+            this.ySpeed = this.maximumYSpeed;
         }
+
     }
+
+
+
+    flap() {
+        this.ySpeed = -10;
+    }
+
 }

@@ -6,11 +6,15 @@ let pencil = canvas.getContext("2d"); // This gives you the drawing context, lik
 
 
 function gameLoop() {
+    
     //erase the canvas
     pencil.clearRect(0, 0, canvas.width, canvas.height);
 
+   
     testPipe.move();
     testPipe.draw();
+
+    bird.gravity();
     bird.draw();
 }
 
@@ -28,12 +32,18 @@ setInterval(raiseScore, 1000);
 
 function detectClick() {
     console.log("CLicked!")
+    bird.flap()
+}
+
+function detectKey() {
+    console.log("Key pressed!")
+    bird.flap()
 }
 
 canvas.addEventListener("click", detectClick);
+document.addEventListener("keydown", detectKey);
 
 let testPipe = new PipeObstacle(canvas, pencil);
 testPipe.draw();
 
 let bird = new Bird(canvas, pencil);
-bird.gravity();

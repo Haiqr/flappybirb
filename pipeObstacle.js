@@ -4,11 +4,11 @@ export class PipeObstacle {
 
     x = 300;
     y = 100;
-    height = 500; //dynamic height
+    height; //height will be dynamic
     width = 100;
     canvas;
     pencil;
-    speed = 10;
+    speed = 5;
     gap = 150;
 
     //pipe parts
@@ -18,12 +18,13 @@ export class PipeObstacle {
     constructor(canvas, pencil) {
         this.pencil = pencil;
         this.canvas = canvas;
+
         this.height = canvas.height;
     }
 
     draw() {
         //top pipe
-        this.pencil.fillStyle = '#02c938'; // Set the fill color
+        this.pencil.fillStyle = 'green'; // Set the fill color
         this.pencil.fillRect(
             this.x, 
             this.y - this.height, 
@@ -32,7 +33,7 @@ export class PipeObstacle {
         ); // x, y, w, h
 
         //bottom pipe
-        this.pencil.fillStyle = '#02c938'; // Set the fill color
+        this.pencil.fillStyle = 'green'; // Set the fill color
         this.pencil.fillRect(
             this.x, 
             this.y + this.gap, 
@@ -43,12 +44,11 @@ export class PipeObstacle {
 
     move() {
         this.x -= this.speed;
-        
 
         //check if we need to recycle
         if(this.x < -this.width) {
             this.x = this.canvas.width;
-            this.y= Math.random() * (this.canvas.height - this.gap - 200) + 100;
+            this.y = Math.random() * this.canvas.height;
         }
 
 
